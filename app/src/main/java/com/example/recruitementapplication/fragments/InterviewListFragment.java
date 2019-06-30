@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +33,12 @@ public class InterviewListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.i("BEFORE 1", "FRAGMENT 1");
         TableView<String[]> tableView = getActivity().findViewById(R.id.interviews);
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(), TABLE_HEADERS));
         tableView.setDataAdapter(new SimpleTableDataAdapter(getContext(), DATA_TO_SHOW));
         try{
+            Log.i("BEFORE", "FRAGMENT");
             new InterviewsLoader().execute().get();
         }catch(ExecutionException e){
             e.printStackTrace();

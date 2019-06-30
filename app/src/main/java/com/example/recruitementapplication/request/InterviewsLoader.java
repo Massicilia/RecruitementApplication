@@ -24,7 +24,7 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
 
         String usernameColonPassword = "test-user:s3cur3d";
         String basicAuthPayload = "Basic " + Base64.getEncoder().encodeToString(usernameColonPassword.getBytes());
-
+        Log.i("ETAPE", "BEFORE TRY");
         BufferedReader httpResponseReader = null;
         try {
             URL serverUrl = new URL("https://api-recruitment.herokuapp.com/interviews");
@@ -51,18 +51,18 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
                 }
             }
         }
-
+    return null;
     }
+
     private static String readStream(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder();
-        BufferedReader r = new BufferedReader(new InputStreamReader(is),1000);
-        for (String line = r.readLine(); line != null; line =r.readLine()){
+        BufferedReader r = new BufferedReader(new InputStreamReader(is), 1000);
+        for (String line = r.readLine(); line != null; line = r.readLine()) {
             sb.append(line);
         }
         Log.i("DATAS", String.valueOf(sb));
         is.close();
         return sb.toString();
     }
-
 
 }
