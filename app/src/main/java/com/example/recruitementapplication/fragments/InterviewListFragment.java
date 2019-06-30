@@ -1,4 +1,4 @@
-package com.example.recruitementapplication;
+package com.example.recruitementapplication.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.recruitementapplication.R;
+import com.example.recruitementapplication.request.InterviewsLoader;
+
+import java.util.concurrent.ExecutionException;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
@@ -30,7 +35,14 @@ public class InterviewListFragment extends Fragment {
         TableView<String[]> tableView = getActivity().findViewById(R.id.interviews);
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(), TABLE_HEADERS));
         tableView.setDataAdapter(new SimpleTableDataAdapter(getContext(), DATA_TO_SHOW));
-            super.onViewCreated(view, savedInstanceState);
+        try{
+            new InterviewsLoader().execute().get();
+        }catch(ExecutionException e){
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        super.onViewCreated(view, savedInstanceState);
     }
 
 }

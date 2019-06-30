@@ -1,5 +1,6 @@
 package com.example.recruitementapplication.request;
 
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,9 +17,10 @@ import java.net.URL;
 import java.util.Base64;
 
 
-public class InterviewsLoader {
+public class InterviewsLoader extends AsyncTask<String, Void, String> {
 
-    public static void main(String[] args) {
+    @Override
+    protected String doInBackground(String... strings) {
 
         String usernameColonPassword = "test-user:s3cur3d";
         String basicAuthPayload = "Basic " + Base64.getEncoder().encodeToString(usernameColonPassword.getBytes());
