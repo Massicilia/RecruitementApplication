@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
-            Fragment newFragment = new HomeFragment();
+            Fragment newFragment = new com.example.recruitementapplication.HomeFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.content_frame, newFragment);
             ft.addToBackStack(null);
