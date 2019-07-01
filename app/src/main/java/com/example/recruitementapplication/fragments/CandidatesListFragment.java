@@ -49,7 +49,7 @@ public class CandidatesListFragment extends Fragment {
 
             JSONArray reader = new JSONArray(datas);
             for(int i=0; i<reader.length(); i++){
-                String candidateName = reader.getJSONObject(i).getString("firstname") + " " + reader.getJSONObject(i).getString("lastname");
+                String candidateName = reader.getJSONObject(i).getString("firstName") + " " + reader.getJSONObject(i).getString("lastName");
                 String candidateMail = reader.getJSONObject(i).getString("mail");
                 String candidateExperience = reader.getJSONObject(i).getInt("experience")+" ";
                 String candidateEnterprise = reader.getJSONObject(i).getString("enterprise");
@@ -64,7 +64,7 @@ public class CandidatesListFragment extends Fragment {
                     skills.append(skill);
                 }
                 Log.i("Skill Names", skills.toString());
-                JSONArray JSONRKeySkill = reader.getJSONObject(i).getJSONArray("keyskills");
+                JSONArray JSONRKeySkill = reader.getJSONObject(i).getJSONArray("keySkills");
                 StringBuilder keyskills = new StringBuilder();
                 for(int j=0; j<JSONRSkill.length(); j++){
                     String keyskill = JSONRSkill.getJSONObject(j).getString("nameSkill");

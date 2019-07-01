@@ -18,9 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
-import com.example.recruitementapplication.CandidatesListFragment;
-import com.example.recruitementapplication.HomeFragment;
-import com.example.recruitementapplication.InterviewFragment;
+import com.example.recruitementapplication.fragments.CandidatesListFragment;
+import com.example.recruitementapplication.fragments.HomeFragment;
+import com.example.recruitementapplication.fragments.InterviewFragment;
 import com.example.recruitementapplication.R;
 import com.example.recruitementapplication.fragments.InterviewListFragment;
 
