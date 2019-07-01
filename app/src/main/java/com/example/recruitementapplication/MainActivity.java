@@ -1,4 +1,4 @@
-package com.example.recruitementapplication.activities;
+package com.example.recruitementapplication;
 
 import android.content.Intent;
 import android.os.Bundle;

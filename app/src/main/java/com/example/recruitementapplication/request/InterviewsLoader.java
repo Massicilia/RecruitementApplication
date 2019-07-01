@@ -26,6 +26,7 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
         String basicAuthPayload = "Basic " + Base64.getEncoder().encodeToString(usernameColonPassword.getBytes());
         Log.i("ETAPE", "BEFORE TRY");
         BufferedReader httpResponseReader = null;
+        StringBuilder result = new StringBuilder();
         try {
             URL serverUrl = new URL("https://api-recruitment.herokuapp.com/interviews");
             HttpURLConnection urlConnection = (HttpURLConnection) serverUrl.openConnection();
@@ -33,10 +34,10 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
             urlConnection.setRequestMethod("GET");
 
             urlConnection.addRequestProperty("Authorization", basicAuthPayload);
-
+            Log.i("ETAPE", "AUTHORISATION");
             InputStream in =
                     new BufferedInputStream(urlConnection.getInputStream());
-            readStream(in);
+            result = readStream(in);
             Log.i("ETAPE", "GET DATAS");
 
         } catch (IOException ioe) {
@@ -51,10 +52,10 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
                 }
             }
         }
-    return null;
+    return result.toString();
     }
 
-    private static String readStream(InputStream is) throws IOException {
+    private static StringBuilder readStream(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder();
         BufferedReader r = new BufferedReader(new InputStreamReader(is), 1000);
         for (String line = r.readLine(); line != null; line = r.readLine()) {
@@ -62,7 +63,7 @@ public class InterviewsLoader extends AsyncTask<String, Void, String> {
         }
         Log.i("DATAS", String.valueOf(sb));
         is.close();
-        return sb.toString();
+        return sb;
     }
 
 }
