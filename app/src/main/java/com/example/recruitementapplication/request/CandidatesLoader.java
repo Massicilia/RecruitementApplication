@@ -34,6 +34,9 @@ public class CandidatesLoader extends AsyncTask<String, Void, String> {
                     new BufferedInputStream(urlConnection.getInputStream());
             result = readStream(in);
             Log.i("ETAPE", "GET DATAS");
+           // Log.i("STATUS", String.valueOf(urlConnection.getResponseCode()));
+           // Log.i("MSG" , String.valueOf(urlConnection.getResponseMessage()));
+
 
         } catch (IOException ioe) {
             ioe.printStackTrace();

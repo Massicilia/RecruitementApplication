@@ -3,6 +3,7 @@ package com.example.recruitementapplication.request;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,8 +57,19 @@ public class InterviewCreation extends AsyncTask<String, Void, String> {
             writer.flush();
             writer.close();
             Log.i("ETAPE", "CLOSE OBJECT");
+
+            InputStream in =
+                    new BufferedInputStream(urlConnection.getInputStream());
+            StringBuilder result = readStream(in);
+            Log.i("RESULT", result.toString());
+            JSONObject reader = new JSONObject(result.toString());
+            String message = reader.getString("message");
+            Log.i("MSG" , "MSG:" + message);
             Log.i("STATUS", String.valueOf(urlConnection.getResponseCode()));
-            Log.i("MSG" , urlConnection.getResponseMessage());
+            Log.i("CONTENT", String.valueOf(urlConnection.getContent()));
+
+            return  message;
+
 
 
         } catch (IOException ioe) {
@@ -75,6 +87,17 @@ public class InterviewCreation extends AsyncTask<String, Void, String> {
             }
         }
         return null;
+    }
+
+    private static StringBuilder readStream(InputStream is) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader r = new BufferedReader(new InputStreamReader(is), 1000);
+        for (String line = r.readLine(); line != null; line = r.readLine()) {
+            sb.append(line);
+        }
+        Log.i("DATAS", String.valueOf(sb));
+        is.close();
+        return sb;
     }
 }
 
