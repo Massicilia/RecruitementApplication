@@ -75,12 +75,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new CandidatesListFragment();
         } else if (id == R.id.nav_interview_list) {
             fragment = new InterviewListFragment();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
-
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);

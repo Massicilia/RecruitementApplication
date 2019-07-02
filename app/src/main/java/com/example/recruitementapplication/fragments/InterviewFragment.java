@@ -41,8 +41,8 @@ public class InterviewFragment extends Fragment {
         dateInterview = getActivity().findViewById(R.id.dateInterview);
         btnAddInterview = getActivity().findViewById(R.id.btnAddInterview);
 
-        uuidCandidate.setText("123e4567-e89b-12d3-a456-556642449876"); //TO DELETE
-        dateInterview.setText("2019-07-03T12:00:00"); //TO DELETE
+       // uuidCandidate.setText("123e4567-e89b-12d3-a456-556642449876"); //TO DELETE
+       // dateInterview.setText("2019-07-03T12:00:00"); //TO DELETE
 
         btnAddInterview.setOnClickListener(new View.OnClickListener() {
             @Override
